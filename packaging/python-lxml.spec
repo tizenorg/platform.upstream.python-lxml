@@ -6,6 +6,7 @@ License:        BSD-3-Clause and GPL-2.0+
 Group:          Development/Languages/Python
 Url:            http://lxml.de/
 Source:         http://pypi.python.org/packages/source/l/lxml/lxml-%{version}.tar.gz
+Source1001: 	python-lxml.manifest
 BuildRequires:  libxslt-devel
 #BuildRequires:  python-Cython
 BuildRequires:  python-devel
@@ -20,6 +21,7 @@ RelaxNG, XML Schema, XSLT, C14N and much more.
 
 %prep
 %setup -q -n lxml-%{version}
+cp %{SOURCE1001} .
 
 %build
 CFLAGS="%{optflags}" python setup.py build
@@ -28,6 +30,7 @@ CFLAGS="%{optflags}" python setup.py build
 python setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %doc LICENSES.txt 
 %{python_sitearch}/lxml/
