@@ -24,6 +24,9 @@ RelaxNG, XML Schema, XSLT, C14N and much more.
 cp %{SOURCE1001} .
 
 %build
+export CFLAGS+=" -fvisibility=hidden"
+  export CXXFLAGS+=" -fvisibility=hidden"
+  
 CFLAGS="%{optflags}" python setup.py build
 
 %install
