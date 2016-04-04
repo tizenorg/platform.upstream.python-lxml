@@ -27,7 +27,7 @@ cp %{SOURCE1001} .
 export CFLAGS+=" -fvisibility=hidden"
   export CXXFLAGS+=" -fvisibility=hidden"
   
-CFLAGS="%{optflags}" python setup.py build
+CFLAGS="%{optflags} -fvisibility=hidden" python setup.py build
 
 %install
 python setup.py install --prefix=%{_prefix} --root=%{buildroot}
